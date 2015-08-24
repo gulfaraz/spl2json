@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SPL2JSON</title>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body ng-app="spl2jsonApp">
+        <section class="app" id="spl2json">
+            <header>SPL2JSON</header>
+            <div id="spl_parser" ng-controller="spl2jsonCtrl">
+                <div id="spl_text">
+                    <textarea ng-model="spl_string" ng-change="string_to_json(spl_string)">Unknown Error</textarea>
+                </div><div id="spl_json">
+                    <pre ng-bind-html="spl_json_display | prettify"></pre>
+                </div>
+            </div>
+        </section>
+        <script src="js/main.js"></script>
+    </body>
+</html>
