@@ -22,10 +22,13 @@ angular.module('spl2jsonApp', ["ngSanitize"])
             "object" : new RegExp("^" + dictionary.object_regex + dictionary.name_regex),
             "terminator" : new RegExp(dictionary.terminator_regex)
         };
+        $scope.spl_json_display = "Fetching JSON...";
         $http.get("stat/init.json").then(function (spl_json) {
             $scope.spl_json = spl_json.data;
             $scope.spl_json_display = JSON.stringify(spl_json.data, undefined, 4);
             $scope.spl_string = json_to_string(dictionary.root, $scope.spl_json);
+        }, function (error) {
+            $scope.spl_json_display = "Failed to fetch JSON";
         });
         var json_to_string = function (root, json) {
             var string = "";
@@ -42,6 +45,7 @@ angular.module('spl2jsonApp', ["ngSanitize"])
                 }
             }
             return string.trim();
+
             function parse_namespace(namespace_name, namespace_object) {
                 var string = "";
                 for(var keys = Object.keys(namespace_object), i = 0, end = keys.length; i < end; i++) {
@@ -138,8 +142,6 @@ angular.module('spl2jsonApp', ["ngSanitize"])
                         break;
                 }
             } else {
-                //console.log(substring);
-                //console.log(schema);
                 console.error(type + " REGEX ERROR");
                 console.error(breakdown);
             }
@@ -148,7 +150,7 @@ angular.module('spl2jsonApp', ["ngSanitize"])
         var clean_string = function (string) {
             var lines = string.split("\n");
             var clean_string = lines.filter(function (line) {
-                return (line[0] === "#");
+                return (line[0] !== "#");
             });
             return clean_string.join("\n");
         };

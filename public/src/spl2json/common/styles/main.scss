@@ -48,6 +48,10 @@ a {
     text-decoration: none;
 }
 
+[ng-cloak] {
+    display: none !important;
+}
+
 .inline {
     & > * {
         display: inline-block;
@@ -115,7 +119,7 @@ aside {
     }
     &#spl2json {
         #spl_parser {
-            height: 550px;
+            height: 500px;
             & > div {
                 display: inline-block;
                 border: 1px solid #ccc;
@@ -157,6 +161,10 @@ aside {
                     }
                 }
             }
+        }
+        #parser_controls {
+            text-align: center;
+            padding-top: 30px;
         }
     }
 }
