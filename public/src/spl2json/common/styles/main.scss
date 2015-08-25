@@ -123,8 +123,9 @@ aside {
                 margin: 0 1%;
                 vertical-align: top;
                 height: 100%;
-                overflow: auto;
+                font-size: 70%;
                 &#spl_json {
+                    overflow: auto;
                     pre {
                         padding: 5px;
                         margin: 5px;
@@ -153,7 +154,6 @@ aside {
                         width: 100%;
                         padding: 5px;
                         background-color: #fbfbfb;
-                        word-break: break-all;
                     }
                 }
             }
