@@ -93,7 +93,6 @@ angular.module('spl2jsonApp', ["ngSanitize"])
             if(string) {
                 var json = {};
                 var substrings = (clean_string(string)).split(regex.terminator);
-                substrings.pop();
                 for(var i = 0; i < substrings.length; i++) {
                     if(regex.namespace.test(substrings[i])) {
                         json = substring_to_json("NAMESPACE", substrings[i], json, regex.namespace);
